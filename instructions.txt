@@ -1,0 +1,61 @@
+The website "levi" consists of:
+    index.html
+    album
+    css
+    images 
+
+--------------------------------------------------------------------------------
+PLAN TO PROCEED
+
+1)
+    On my existing kwegner7 GitHub add "levi" as new project.
+    Determine what links Levi is interested in.
+    Upload and test on Levi's laptop, android, iPad, ubuntu.
+2)
+    Create a Levi GitHub and upload.
+    Give this link as the official link to Levi.
+3)
+    Install on my Windows: http://windows.github.com
+    Study how this might simplify Levi doing the same to make changes and upload
+    to his personal GitHub.
+
+-----------------------------------------------------------------------i---------
+
+
+Configure "levi" to be a git repository.
+At GitHub create an account for Levi.
+Upload this "levi" to GitHub.
+Express as webpage on GitHub.
+Write-up how Levi can "push" to the Github after he has modified the "levi".
+
+--------------------------------------------------------------------------------
+GITHUB NOTES
+
+Simply visit https://github.com, choose a user name that isn’t already taken,
+provide an email address and a password, and click the big green 
+“Sign up for GitHub” button.
+
+On Oct 3, 2015 we formed a "Family Sharing"
+levihalim@icloud.com
+Password is: LeviHalim17112003
+
+Clicking the Octocat logo at the top-left of the screen will take you to your
+dashboard page.
+
+For the moment we can ignore SSH Keys, so will have to enter password
+frequently.
+
+Email address is used to send billing info and to identify you as a Contributor.
+
+You can find the Two-factor Authentication setup under the Security tab of
+your Account settings. (in case password gets lost)
+
+
+You could do a "FORK" to copy an initial repository from kwegner7
+
+-------------------------
+Creating a New Repository
+-------------------------
+Click "New Repository"
+
+--------------------------------------------------------------------------------

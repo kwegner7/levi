@@ -1,0 +1,120 @@
+#===============================================================================
+# levi.git is an initial website for Levi
+#===============================================================================
+cd /data/proj/git/levi
+and click on index.html
+
+#===============================================================================
+# Links
+#===============================================================================
+This is the main page, exported from the github repository:
+    http://kwegner7.github.io/levi/index.html
+
+This is the local location of the main page:
+    file:///data/proj/git/levi/index.html
+
+This is the github repository:
+    https://github.com/kwegner7/levi.git
+
+Create a new repository:
+    https://github.com/kwegner7/levi 
+
+And the link will be:
+    http://kwegner7.github.io/levi
+
+#===============================================================================
+# HOW THIS WEBSITE PAGE WAS CREATED
+#===============================================================================
+
+# Create a new .git folder here
+  cd /data/proj/git/levi
+  git init
+  git add . 
+  git commit -m "Levi's Website"
+
+
+
+
+
+
+
+
+# Manually create a new repository at GitHub
+   click New Repository, then enter name "levi", then Create, then copy the link
+   it should be: https://github.com/kwegner7/levi.git
+
+# Add the new Github repository as a remote
+  cd /data/proj/git/levi
+  git remote add github https://github.com/kwegner7/levi.git
+  git remote -v
+  git push github master
+
+# Create a branch so that GitHub will export and allow web pages
+  git branch gh-pages
+  git checkout gh-pages
+  git push -u github gh-pages
+
+# Create a backup repository on hard drive
+  cd /media/kurt/8GB-BLUE4/git
+  git clone --mirror /proj/camp/.git
+  cd camp.git && git remote -v
+      origin  /proj/special-camp/.git (fetch)
+      origin  /proj/special-camp/.git (push)
+
+# Add the new backup repository as a remote
+  cd /proj/camp
+  git remote add backup /media/kurt/8GB-BLUE4/git/camp.git 
+  git push -u backup gh-pages
+  git diff gh-pages backup/gh-pages
+
+# This simplifies the push commands
+  git push -u github gh-pages
+  git push -u backup gh-pages
+
+git remote -v
+git branch -v
+
+git push github
+git push backup
+
+########################################################################  
+# Create a backup repository on USB
+# It contains a master and a gh-pages branch.
+# It contains a remote branch called "origin"
+# The only remote for this repository is /proj/camp/.git
+# and it is known as "origin"
+  cd /media/kurt/8GB-BLUE4/git
+  git clone --mirror /proj/camp/.git
+  cd camp.git && git remote -v
+      origin  /proj/camp/.git (fetch)
+      origin  /proj/camp/.git (push)
+  
+# Back at the origin, git the new backup repository a remote name
+# and push to it
+  cd /proj/camp
+  git remote add usb /media/kurt/8GB-BLUE4/git/camp.git 
+# This sets push to push from the gh-pages branch of origin
+# to the gh-pages branch of usb
+  git push -u usb gh-pages
+  git diff gh-pages usb/gh-pages
+##########################################################################
+ 7155aa6db6647b440b4f3a46d534de55988f2020  
+
+git push https://7155aa6db6647b440b4f3a46d534de55988f2020@github.com/kwegner7/camp.git gh-pages
+
+https://github.com/blog/1270-easier-builds-and-deployments-using-git-over-https-and-oauth
+
+
+
+Hi Bruce,
+
+I have created 3 use cases that relate to each of the database tables that you have described. There may be mistakes here so let me know about them. The following is a link to a single html containing all 3:
+
+http://kwegner7.github.io/camp/publish
+
+I used a tool called "umlet" to create the Use Case Diagrams. I manually created the HTML5 code. Both of these are easy to modify and if this kind of documentation is useful we can collaborate in the cloud on things like this.
+
+Kurt
+
+
+ 

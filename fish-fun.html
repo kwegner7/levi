@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>Fish Fun</title>
+<script type="text/javascript">
+
+/*******************************************
+* global variables
+*******************************************/
+var scheduleFish;
+var locx=100;
+var locy=100;
+var speed=30;
+var down=true;
+var incr=5
+
+/*******************************************
+* movefish 
+*   increment x,y and modify DOM
+*******************************************/
+function movefish() { 
+    var fish = document.getElementById("fish");
+	if (locx < 650) { 
+	   locx += incr/2;
+	}
+    else {
+       locx = incr/2;
+    } 
+	if (down) {
+       locy += incr;
+       if (locy > 350) { down=false; }
+    }
+	else {
+       locy -= incr;
+       if (locy < 120) { down=true; }
+    }
+
+    fish.style.left = locx; // this modifies the DOM
+    fish.style.top  = locy; // this modifies the DOM
+} 
+
+/*******************************************
+* startMove
+*   determine how often movefish will be 
+*   scheduled to update the x,y in the DOM
+*   and begin to update at this rate
+*******************************************/
+function startMove() {
+	scheduleFish=setInterval('movefish()', speed); 
+}
+
+/*******************************************
+* stopMove
+*   stop scheduling the movefish 
+*******************************************/
+function stopMove() {
+	clearInterval(scheduleFish);
+}
+
+/*******************************************
+* adjustSpeed
+*   the DOM holds the speed value from the
+*   input tag below 
+*******************************************/
+function adjustSpeed() {
+   speedValue=document.control.speed.value;
+   speed = parseInt(speedValue);
+   stopMove();
+   startMove();
+}
+ 
+</script> 
+</head> 
+
+
+<body bgcolor="#ffffff"> 
+<h1>Fish Is Swimming</h1>
+
+<!-- user may click on 3 buttons and enter one text field --> 
+<form name="control"> 
+  <input type="button" value="Move the fish" OnClick="startMove(); "> 
+  <input type="button" value="Stop the move" OnClick="stopMove(); "> 
+  <input type="text" name="speed" value="50"> 
+  <input type="button" value="Adjust Speed" OnClick="adjustSpeed();">
+</form> 
+
+<!-- this loads a plug-in that is not recognized by Chromium but Firefox OK
+<object
+  classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+  codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" 
+  width="800" height="400">
+    <param name="movie" value="preview.swf" />
+    <param name="quality" value="high" />
+	<param name="wmode" value="opaque" />
+      <embed 
+        src="preview.swf" quality="high"
+        pluginspage="http://www.macromedia.com/go/getflashplayer"
+        type="application/x-shockwave-flash"
+	    wmode="opaque"
+        width="800" height="400">
+      </embed>
+</object>
+-->
+
+
+<!-- there are 4 images, only one moves by modifying the position in the DOM -->
+<!-- the z-index shows which images are in front of which -->
+<img id="bluepole" src="images/cyanBar.png" 
+     style="position: absolute; top: 150px; left: 160px; z-index:30; " /> 
+<img id="redpole" src="images/redBar.png"
+     style="position: absolute; top: 150px; left: 260px; z-index:10; " /> 
+<img id="greenpole" src="images/limeBar.png"
+     style="position: absolute; top: 150px; left: 360px; z-index:40; " /> 
+<img id="fish" src="images/fish1.png" 
+     style="position: absolute; top: 100px; left: 10px; z-index:15; " />
+ 
+</body> 
+</html> 

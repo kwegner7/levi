@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Div Example</title>
+  <link href=css/styles.css type=text/css rel=STYLESHEET>
+
+<style type=text/css>
+
+    #entire-container { width:1000px; }
+    #row1             { width:100%; height:50px; text-align:right; }
+    #row2-1of3        { width:25%;  height:300px; }
+    #row2-2of3        { width:75%;  height:150px; }
+    #row2-3of3        { width:50%;  height:150px; }
+    #row3             { width:100%; height:50px; text-align:center; }
+
+    #row2-2of3 > p    { color:teal; }
+
+    #box-example {
+        border: 20px solid blue;
+        padding: 30px; /* this is background surrounding text */
+        width: 300px;  /* within the padding so total width is 400 */
+        background-color:lime;
+        margin: 40px;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div id=entire-container>
+
+<!-- ---------- ROW 1 consists of 1 BLOCK ---------- -->
+
+<div id=row1 class=red>
+    <h1>Main Title of Web Page</h1>
+</div>
+
+<!-- ---------- ROW 2 consists of 3 BLOCKS ---------- -->
+
+<div id=row2-1of3 class="left silver">
+    <b>Menu</b><br>
+    HTML<br>
+    CSS<br>
+    JavaScript
+</div>
+
+<div id=row2-2of3 class="left lime">
+    <p>Content 1 goes here</p>
+</div>
+
+<div id=row2-3of3 class="right blue">
+    <p>Content 2 goes here</p>
+</div>
+
+<!-- ---------- ROW 3 consists of 1 BLOCK ---------- -->
+
+<div id="row3" class="red clear">
+    Copyright © W3Schools.com
+</div>
+</div> <!-- entire-container -->
+
+
+<hr align="left" size="10" color=black>
+<div id="box-example">
+    BOX EXAMPLE
+</div>
+
+
+<hr align="left" size="10" color=black>
+<ul type="circle">
+<li>Item 1
+<ul>
+<li>Item A</li>
+<li>Item B</li>
+</ul></li>
+<li>Item 2</li>
+</ul>
+<hr align="left" size="10" color=black>
+<ol>
+<li>Item 1
+<ul>
+<li>Item A</li>
+<li>Item B</li>
+</ul></li>
+<li>Item 2</li>
+</ol>
+
+<hr align="left" size="10" color=black>
+<div class=maroon><h2 style=text-align:center>maroon</h2></div>
+<div class=red><h2 style=text-align:center>red</h2></div>
+<div class=orange><h2 style=text-align:center>orange</h2></div>
+<div class=yellow><h2 style=text-align:center>yellow</h2></div>
+<div class=olive><h2 style=text-align:center>olive</h2></div>
+<div class=purple><h2 style=text-align:center>purple</h2></div>
+<div class=fuchsia><h2 style=text-align:center>fuchsia</h2></div>
+<div class=white><h2 style=text-align:center>white</h2></div>
+<div class=lime><h2 style=text-align:center>lime</h2></div>
+<div class=green><h2 style=text-align:center>green</h2></div>
+<div class=navy><h2 style=text-align:center>navy</h2></div>
+<div class=blue><h2 style=text-align:center>blue</h2></div>
+<div class=aqua><h2 style=text-align:center>aqua</h2></div>
+<div class=teal><h2 style=text-align:center>teal</h2></div>
+<div class=black><h2 style=text-align:center>black</h2></div>
+<div class=silver><h2 style=text-align:center>silver</h2></div>
+<div class=gray><h2 style=text-align:center>gray</h2></div>
+
+
+</body>
+</html>
