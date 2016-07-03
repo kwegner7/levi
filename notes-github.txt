@@ -140,8 +140,8 @@ At this point "local" config looks like:
   ##############################################################
   # Manually create a new repository at GitHub
   ##############################################################
-   click New Repository, then enter name "levi", then Create, then copy the link
-   it should be: https://github.com/kwegner7/levi.git
+  click New Repository, then enter name "levi", then Create, then copy the link
+  it should be: https://github.com/kwegner7/levi.git
 
   # Add the new Github repository as a remote
   cd /data/proj/git/levi
@@ -152,7 +152,6 @@ At this point "local" config looks like:
 
   git checkout gh-pages
   git push -u github gh-pages # this default pushes the gh-pages branch
-
 
   ##############################################################
   # HOW TO MERGE BRANCH gh-pages BACK INTO master
@@ -169,25 +168,6 @@ At this point "local" config looks like:
   git diff --summary  refs/heads/master refs/heads/gh-pages
   git diff --shortstat refs/heads/master refs/heads/gh-pages
   git diff --name-only refs/heads/master refs/heads/gh-pages
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ########################################################################  
