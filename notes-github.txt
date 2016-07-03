@@ -104,44 +104,54 @@ At this point "local" config looks like:
 	url = /media/kurt/F663-CCE9/git/levi.git
 	fetch = +refs/heads/*:refs/remotes/backup/*
 
+  ##############################################################
+  # HOW TO PUSH
+  #     Specify the name of the remote or the URL to the remote
+  #     List the local branch HEADS to be pushed
+  ##############################################################
   cd /data/proj/git/levi
   git status
-
-  git push refs/heads/gh-pages refs/remotes/backup/gh-pages
+  git commit -am "C1"
+  git push backup refs/heads/gh-pages refs/heads/master
+  git push backup master
+  git push /media/kurt/F663-CCE9/git/levi.git refs/heads/*
 
   # this sets up "tracking"
-  git push -u backup gh-pages
-
+  # This simplifies the push commands
+    git push -u github gh-pages
+    git push -u backup gh-pages
+  # So that:
+    git push github now means git push github refs/heads/gh-pages
+    git push backup now means git push backup refs/heads/gh-pages
+  # I think the best is to push the branch of the local folder just committed
+    git status # says "On branch gh-pages" so:
+    git push backup gh-pages
 
   cd /media/kurt/F663-CCE9/git/levi.git
-  # so now can do this:
-  git push refs/heads/gh-pages refs/remotes/backup/gh-pages
+  cd /data/proj/git/levi
 
-
+  ##############################################################
+  # HOW TO DIFF BETWEEN HEADS OF BRANCHES
+  ##############################################################
   git diff gh-pages backup/gh-pages
+  git diff refs/heads/gh-pages refs/remotes/backup/gh-pages
+  git diff refs/heads/gh-pages refs/remotes/backup/master
 
-# This simplifies the push commands
-  git push -u github gh-pages
-  git push -u backup gh-pages
-
-git remote -v
-git branch -v
-
-git push github
-git push backup
-
-# Manually create a new repository at GitHub
+  ##############################################################
+  # Manually create a new repository at GitHub
+  ##############################################################
    click New Repository, then enter name "levi", then Create, then copy the link
    it should be: https://github.com/kwegner7/levi.git
 
-# Add the new Github repository as a remote
+  # Add the new Github repository as a remote
   cd /data/proj/git/levi
   git remote add github https://github.com/kwegner7/levi.git
   git remote -v
-  git push github master
+  git status and possibly commit
+  git push github refs/heads/master refs/heads/gh-pages
 
   git checkout gh-pages
-  git push -u github gh-pages # not yet
+  git push -u github gh-pages # this default pushes the gh-pages branch
 
 ########################################################################  
 # Create a backup repository on USB
