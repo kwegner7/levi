@@ -32,50 +32,163 @@ And the link will be:
   git add . 
   git commit -m "Levi's Website"
 
+# Remember each Remote and the Local consists of a set of Branches
+# When we checkout from the Local, we must specify one of the Local Branches
+# The working folder will be the HEAD commit of a Branch
+# At this point, the following is redundant because it is our only Branch
+
+  git checkout master # this is the HEAD of the "master" branch
+    # git log shows that its HASH is:
+    # 7177010dab29b8458c94f318655afe931ebc7892 (call this C0)
+    # stored as one line in /data/proj/git/levi/.git/refs/heads/master
+
+git branch --verbose # shows that this commit is the HEAD of branch master
+* master 7177010 Levi's Website
+
+# Locally, create a branch with a special name, it is this branch that GitHub
+# will export as web pages
+  git branch gh-pages
+  git checkout gh-pages
+  git push -u github gh-pages # not yet
+
+# DISCUSSION: We now have these references:
+   .../.git/refs/heads/master refers to C0
+   .../.git/refs/heads/gh-pages refers to C0
+   The working folder for both master and gh-pages contains a modified file
+   Editted .git/description to be "Levi's Website"
+   .../.git/index contains the staged files
+   .../.git/config contains some parameters
+
+# Create a backup repository on hard drive
+  cd /media/kurt/F663-CCE9/git
+  git clone --mirror /data/proj/git/levi/.git
+  cd levi.git && git remote -v
+    local  /data/proj/git/levi/.git (fetch)
+    local  /data/proj/git/levi/.git (push)
 
 
+# Add the new backup repository as a remote
+  cd /data/proj/git/levi
+  git remote add backup /media/kurt/F663-CCE9/git/levi.git 
 
+# We have one local repository and one remote repository
+    URL local repository: /data/proj/git/levi/.git
+    URL remote repository: /media/kurt/F663-CCE9/git/levi.git
 
+    The local repository refers to the remote repository as "backup"
+    backup  /media/kurt/F663-CCE9/git/levi.git (push)
+    cd /media/kurt/F663-CCE9/git/levi.git
+    git remote --verbose
+    The remote repository refers to the local repository as "local"
+    local  /data/proj/git/levi/.git (push)
 
+At this point "backup" config looks like:
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = /data/proj/git/levi/.git
+	fetch = +refs/*:refs/*
+	mirror = true
 
+At this point "local" config looks like:
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "backup"]
+	url = /media/kurt/F663-CCE9/git/levi.git
+	fetch = +refs/heads/*:refs/remotes/backup/*
 
-# Manually create a new repository at GitHub
+  ##############################################################
+  # HOW TO PUSH
+  #     Specify the name of the remote or the URL to the remote
+  #     List the local branch HEADS to be pushed
+  ##############################################################
+  cd /data/proj/git/levi
+  git status
+  git commit -am "C1"
+  git push backup refs/heads/gh-pages refs/heads/master
+  git push backup master
+  git push /media/kurt/F663-CCE9/git/levi.git refs/heads/*
+
+  # this sets up "tracking"
+  # This simplifies the push commands
+    git push -u github gh-pages
+    git push -u backup gh-pages
+  # So that:
+    git push github now means git push github refs/heads/gh-pages
+    git push backup now means git push backup refs/heads/gh-pages
+  # I think the best is to push the branch of the local folder just committed
+    git status # says "On branch gh-pages" so:
+    git push backup gh-pages
+
+  cd /media/kurt/F663-CCE9/git/levi.git
+  cd /data/proj/git/levi
+
+  ##############################################################
+  # HOW TO DIFF BETWEEN HEADS OF BRANCHES
+  ##############################################################
+  git diff gh-pages backup/gh-pages
+  git diff refs/heads/gh-pages refs/remotes/backup/gh-pages
+  git diff refs/heads/gh-pages refs/remotes/backup/master
+
+  ##############################################################
+  # Manually create a new repository at GitHub
+  ##############################################################
    click New Repository, then enter name "levi", then Create, then copy the link
    it should be: https://github.com/kwegner7/levi.git
 
-# Add the new Github repository as a remote
+  # Add the new Github repository as a remote
   cd /data/proj/git/levi
   git remote add github https://github.com/kwegner7/levi.git
   git remote -v
-  git push github master
+  git status and possibly commit
+  git push github refs/heads/master refs/heads/gh-pages
 
-# Create a branch so that GitHub will export and allow web pages
-  git branch gh-pages
   git checkout gh-pages
-  git push -u github gh-pages
+  git push -u github gh-pages # this default pushes the gh-pages branch
 
-# Create a backup repository on hard drive
-  cd /media/kurt/8GB-BLUE4/git
-  git clone --mirror /proj/camp/.git
-  cd camp.git && git remote -v
-      origin  /proj/special-camp/.git (fetch)
-      origin  /proj/special-camp/.git (push)
 
-# Add the new backup repository as a remote
-  cd /proj/camp
-  git remote add backup /media/kurt/8GB-BLUE4/git/camp.git 
-  git push -u backup gh-pages
-  git diff gh-pages backup/gh-pages
+  ##############################################################
+  # HOW TO MERGE BRANCH gh-pages BACK INTO master
+  # This will be a fast forward merge
+  # Notice we do not remove the gh-pages branch so it continues
+  # independent of master.
+  ##############################################################
+  cd /data/proj/git/levi
+  git status -s
+  git add notes-github.txt
+  git status -s
+  git commit -m "C2"
+  git checkout master
+  git diff --summary  refs/heads/master refs/heads/gh-pages
+  git diff --shortstat refs/heads/master refs/heads/gh-pages
+  git diff --name-only refs/heads/master refs/heads/gh-pages
 
-# This simplifies the push commands
-  git push -u github gh-pages
-  git push -u backup gh-pages
 
-git remote -v
-git branch -v
 
-git push github
-git push backup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ########################################################################  
 # Create a backup repository on USB
