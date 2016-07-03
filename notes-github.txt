@@ -32,39 +32,92 @@ And the link will be:
   git add . 
   git commit -m "Levi's Website"
 
+# Remember each Remote and the Local consists of a set of Branches
+# When we checkout from the Local, we must specify one of the Local Branches
+# The working folder will be the HEAD commit of a Branch
+# At this point, the following is redundant because it is our only Branch
 
+  git checkout master # this is the HEAD of the "master" branch
+    # git log shows that its HASH is:
+    # 7177010dab29b8458c94f318655afe931ebc7892 (call this C0)
+    # stored as one line in /data/proj/git/levi/.git/refs/heads/master
 
+git branch --verbose # shows that this commit is the HEAD of branch master
+* master 7177010 Levi's Website
 
-
-
-
-
-# Manually create a new repository at GitHub
-   click New Repository, then enter name "levi", then Create, then copy the link
-   it should be: https://github.com/kwegner7/levi.git
-
-# Add the new Github repository as a remote
-  cd /data/proj/git/levi
-  git remote add github https://github.com/kwegner7/levi.git
-  git remote -v
-  git push github master
-
-# Create a branch so that GitHub will export and allow web pages
+# Locally, create a branch with a special name, it is this branch that GitHub
+# will export as web pages
   git branch gh-pages
   git checkout gh-pages
-  git push -u github gh-pages
+  git push -u github gh-pages # not yet
+
+# DISCUSSION: We now have these references:
+   .../.git/refs/heads/master refers to C0
+   .../.git/refs/heads/gh-pages refers to C0
+   The working folder for both master and gh-pages contains a modified file
+   Editted .git/description to be "Levi's Website"
+   .../.git/index contains the staged files
+   .../.git/config contains some parameters
 
 # Create a backup repository on hard drive
-  cd /media/kurt/8GB-BLUE4/git
-  git clone --mirror /proj/camp/.git
-  cd camp.git && git remote -v
-      origin  /proj/special-camp/.git (fetch)
-      origin  /proj/special-camp/.git (push)
+  cd /media/kurt/F663-CCE9/git
+  git clone --mirror /data/proj/git/levi/.git
+  cd levi.git && git remote -v
+    local  /data/proj/git/levi/.git (fetch)
+    local  /data/proj/git/levi/.git (push)
+
 
 # Add the new backup repository as a remote
-  cd /proj/camp
-  git remote add backup /media/kurt/8GB-BLUE4/git/camp.git 
+  cd /data/proj/git/levi
+  git remote add backup /media/kurt/F663-CCE9/git/levi.git 
+
+# We have one local repository and one remote repository
+    URL local repository: /data/proj/git/levi/.git
+    URL remote repository: /media/kurt/F663-CCE9/git/levi.git
+
+    The local repository refers to the remote repository as "backup"
+    backup  /media/kurt/F663-CCE9/git/levi.git (push)
+    cd /media/kurt/F663-CCE9/git/levi.git
+    git remote --verbose
+    The remote repository refers to the local repository as "local"
+    local  /data/proj/git/levi/.git (push)
+
+At this point "backup" config looks like:
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = /data/proj/git/levi/.git
+	fetch = +refs/*:refs/*
+	mirror = true
+
+At this point "local" config looks like:
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "backup"]
+	url = /media/kurt/F663-CCE9/git/levi.git
+	fetch = +refs/heads/*:refs/remotes/backup/*
+
+  cd /data/proj/git/levi
+  git status
+
+  git push refs/heads/gh-pages refs/remotes/backup/gh-pages
+
+  # this sets up "tracking"
   git push -u backup gh-pages
+
+
+  cd /media/kurt/F663-CCE9/git/levi.git
+  # so now can do this:
+  git push refs/heads/gh-pages refs/remotes/backup/gh-pages
+
+
   git diff gh-pages backup/gh-pages
 
 # This simplifies the push commands
@@ -76,6 +129,19 @@ git branch -v
 
 git push github
 git push backup
+
+# Manually create a new repository at GitHub
+   click New Repository, then enter name "levi", then Create, then copy the link
+   it should be: https://github.com/kwegner7/levi.git
+
+# Add the new Github repository as a remote
+  cd /data/proj/git/levi
+  git remote add github https://github.com/kwegner7/levi.git
+  git remote -v
+  git push github master
+
+  git checkout gh-pages
+  git push -u github gh-pages # not yet
 
 ########################################################################  
 # Create a backup repository on USB
