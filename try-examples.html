@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<!--
+****************************************************************
+*
+* In the cloud, the URL is at:
+*   http://kwegner7.github.io/levi
+*
+* In this PC, the URL is at:
+*   file:///data/proj/git/levi/index.html
+*
+**************************************************************** 
+-->
+
+<html>
+<head>
+  <title>My Places</title>
+  <link href=css/styles.css type=text/css rel=STYLESHEET>
+
+<style type=text/css>
+
+    h2 { text-align:center; font-style: italic; }
+    h3 { text-align:center; font-style: italic; }
+    #block5 > p { color:white; }
+
+    /**************************************************************
+    * This specifies the bold black border
+    **************************************************************/
+    #container-with-border {
+        margin: 10px auto; /* outermost white space */
+        border: 20px solid black; /* then thick frame border */
+        padding: 30px; /* this is background surrounding text */
+        width: 900px;  /* within the padding */
+        background-color:white;
+    }
+
+    /**************************************************************
+    * This specifies the shape and location of each colored block
+    **************************************************************/
+    #block1  { width: 75%;  height: 50px; padding:  30px 0; float:left; }
+    #block2  { width: 25%;  height: 50px; padding:  30px 0; float:left; }
+    #block3  { width: 25%;  height: 90px; padding:  90px 0; float:left; }
+    #block4  { width: 75%;  height: 45px; padding:  45px 0; float:left; }
+    #picture { width: 19%;  height: 45px; padding:   0px 0; float:left; }
+    #block5  { width: 56%;  height: 45px; padding:  45px 0; float:left; }
+    #block6  { width:100%;  height: 50px; padding:  30px 0; clear:left; }
+
+    /**************************************************************
+    * You can create your own colors here and give each a name
+    **************************************************************/
+    .aqua         { background-color:#00ffff; } 
+    .black        { background-color:#000000; } 
+    .blue         { background-color:#0000ff; }
+    .blue2        { background-color:#DAF4F0; }
+    .fuchsia      { background-color:#ff00ff; } 
+    .gray         { background-color:#808080; }
+    .green        { background-color:#008000; }
+    .lime         { background-color:#00ff00; } 
+    .maroon       { background-color:#800000; }
+    .navy         { background-color:#000080; }
+    .olive        { background-color:#808000; }
+    .orange       { background-color:#ffA500; }
+    .orange2      { background-color:#FFDAB9; }
+    .pink         { background-color:#FFE5F9; }
+    .purple       { background-color:#800080; }
+    .purple3      { background-color:#E6E6FA; }
+    .red          { background-color:#ff0000; }
+    .silver       { background-color:#c0c0c0; }
+    .teal         { background-color:#008080; }
+    .white        { background-color:#ffffff; }
+    .yellow       { background-color:#ffff00; }
+    .pale-blue    { background-color:#CAF7F5; }
+    .pale-green   { background-color:#CCFFCC; }
+    .pale-orange  { background-color:#FFE5C0; }
+    .pale-purple  { background-color:#D7CFFF; }
+    .pale-yellow  { background-color:#F9FFE6; }
+
+</style>
+</head>
+
+<body>
+
+<!--
+****************************************************************
+*
+* To change the color of a block, modify:
+*     class=pale-blue
+*
+* To specify the internet link, modify:
+*     href=www.google.com
+*
+* To change the words within a block, modify:
+*     <h2>GOOGLE</h2>
+*
+**************************************************************** 
+-->
+<div id="container-with-border">
+
+    <a id=block1 class=pale-blue href=example-float.html
+       target=_blank><h2>Example of Float</h2></a>
+
+    <a id=block2 class=pink href=album/Picture0.html 
+       target=_blank><h2>Pictures</h2></a>
+
+    <a id=block3 class=pale-purple href=http://www.toonova.com/the-amazing-world-of-gumball
+       target=_blank><h2>GUMBALL</h2></a>
+
+    <a id=block4 class=pale-yellow href=https://www.youtube.com/
+       target=_blank><h2>YouTube</h2></a>
+
+    <div id=picture>
+       <img src="images/Levi.jpg" alt="" height="300%">
+    </div>
+
+    <a id=block5 class=pale-green href=fish-fun.html
+       target=_blank><h2>Fish Fun</h2></a>
+
+    <a href=examples-from-tutorial.html
+       target=_blank><div id=block6 class=pale-orange><h2>Facebook</h2></div></a>
+
+</div>
+</body>
+</html>

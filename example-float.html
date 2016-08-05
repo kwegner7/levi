@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<!--
+
+NOTES ABOUT USING FLOAT:
+
+http://www.w3schools.com/css/css_float.asp
+
+Suppose element A is a floating element. Then it has style "float:right".
+Suppose element B is the element following element A.
+The page will show B A on same line and B will flow around (to the left) A.
+
+Suppose element C is the element following element A
+   and it has the style "clear:left"
+The on the left side of C element A may not float, therefore C appears
+below A.
+
+
+   For floating an image:
+       The width="200" height="240" must be specified within the <img>
+       and not as a style
+       The top of the image will be close to the point of insertion of <img>
+
+The clear property is used to control the behavior of floating elements.
+Elements after a floating element will flow around it. To avoid this, use the clear property.
+The clear property specifies on which sides of an element floating elements are not allowed to float.
+
+div {
+    clear: left;
+}
+If an element is taller than the element containing it, and it is floated, it will overflow outside of its container.
+
+Then we can add overflow: auto; to the containing element to fix this problem:
+-->
+
+<html>
+<head>
+  <link href=css/styles.css type=text/css rel=STYLESHEET>
+<style>
+img {
+    float: right;
+    margin: 0 0 10px 10px;
+}
+
+/* the floating img is not allowed to float on the left side of a div element */
+.dontfloat {
+    clear: left;
+}
+
+    h2 { text-align:center; font-style: italic; }
+    h3 { text-align:center; font-style: italic; }
+
+    .text-block {
+         width: 30%;  height: 150px; 
+         padding: 5px; background-color:red; color:white; font-size:6; }
+
+
+    .block1  { width: 30%;  height: 50px; padding:  30px 0; background-color:red; }
+    .block2  { width: 25%;  height: 50px; padding:  30px 0; background-color:green; }
+    .block3  { width: 20%;  height: 90px; padding:  90px 0; background-color:blue ; }
+    .block4  { width: 75%;  height: 45px; padding:  45px 0; float:left; }
+    .picture { width: 19%;  height: 45px; padding:   0px 0; float:left; }
+    .block5  { width: 56%;  height: 45px; padding:  45px 0; float:left; }
+    .block6  { width:100%;  height: 50px; padding:  30px 0; clear:left; }
+
+
+</style>
+</head>
+
+<body>
+<p>In this example, the image will float to the right in the paragraph, and the text in the paragraph will wrap around the image.</p>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+<img src="images/Levi.jpg" alt="W3Schools.com" width="140" height="140">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.</p>
+<hr size=10 color=black>
+<!-- ======================================================================= -->
+<div style="background-color:yellow; color:black;">
+
+    <div class=block1 style="background-color:red;">
+       <h2>BLOCK1</h2>
+    </div>
+
+    <div class=block2 style="background-color:green;">
+       <h2>BLOCK2</h2>
+    </div>
+
+    <div class=block3 style="background-color:blue;">
+       <h2>BLOCK3</h2>
+    </div>
+
+    <div class=text-block style="background-color:red; float:right;">
+       <p>1) This is a div block float right. So it starts a new line
+          and on the right. Also, the next element will flow around
+          the div to the left of it at the same y position.</p>
+    </div>
+    <p> 2) this is a p with no float specified. Therefore
+        the text will flow around the div and on its left. Let's say
+        that this p element is in flow mode, neither float nor clear</p>         
+
+    <div class=text-block style="background-color:green; float:right">
+       <p>3) This is a div float right. So it floats as far
+          to the right as it can from the current y position. It bumps into
+          an existing element. Also the next element will flow to its left.
+          </p>
+    </div>
+
+    <div class=text-block style="background-color:blue; color:white">
+       <p>4) This div is flowing, not float not clear, it starts at the y 
+          position of the previous float right</p>
+    </div>
+
+    <div class=block2 style="background-color:blue; color: white; float:right">
+       <h2>5) This div is float right</h2>
+    </div>
+
+    <p>6) So this flows around and around and around and around and around
+           and around and around and around and around and around and around
+            and around and around and around and around and around and around
+            and around and around and around and around and around and around
+            and around and around and around and around and around and around
+            and around and around and around and around and around and around
+            and around and around and around and around and around and around
+            and around and around and around and around and around</p>
+
+    <div class=text-block style="background-color:blue; color:white; clear:both">
+       <p>7) This div is clear both, not float not clear, it starts at the next
+          available y position</p>
+    </div>
+
+
+    <div class=text-block style="background-color:red; position: relative; 
+        top: 100px; left: 100px; z-index:15; ">
+       <p>8) This is a div block with relative x,y position </p>
+    </div>
+
+
+</div>
+<!-- ======================================================================= -->
+</body>
+</html>
+
+
